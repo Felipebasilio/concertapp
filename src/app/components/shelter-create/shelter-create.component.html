@@ -1,0 +1,48 @@
+<!-- ReactiveForm -->
+
+
+<app-seleton-loader *ngIf=!loaded Cwidth="100%" Cheight="100%"></app-seleton-loader>
+
+<mat-card *ngIf=loaded>
+
+    <mat-card-title>Cadastro de abrigo para animais</mat-card-title>
+    <form [formGroup]="myForm">
+        <mat-form-field>
+            <input matInput placeholder="Nome do dono:" formControlName="ownerName">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Nome do estabelecimento:" formControlName="businessName">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Email:" formControlName="email">
+            <mat-error *ngIf="email.invalid && email.touched">
+                Digite um email válido
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Número de telefone:" formControlName="phone">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Endereço do estabelecimento:" formControlName="adress">
+
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-select placeholder="Selecione para qual tipo de animal é o abrigo" formControlName="shelterTo">
+                <mat-option value="Cachorro">Cachorro</mat-option>
+                <mat-option value="Gato">Gato</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+    </form>
+    <button mat-raised-button (click)="createShelter()" color="primary">
+        Salvar
+    </button>
+    
+    <button mat-raised-button (click)="cancel()" c>
+        Cancelar
+    </button>
+    <div id="map"></div>
+    <div id="leafletmap">
+    </div>
+</mat-card>

@@ -1,0 +1,9 @@
+<app-seleton-loader *ngIf=!loaded Cwidth="100%" Cheight="100%"></app-seleton-loader>
+
+<button *ngIf=loaded mat-raised-button (click)="navigateToProductCreate()" color="primary">
+    Cadastrar novo animal
+</button>
+
+<p>Animais cadastrados</p>
+
+<app-product-read *ngIf=loaded></app-product-read>

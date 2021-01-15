@@ -1,0 +1,74 @@
+<app-seleton-loader *ngIf=!loaded Cwidth="100%" Cheight="100%"></app-seleton-loader>
+
+<mat-card *ngIf=loaded>
+    <mat-card-title>Alterar Produto</mat-card-title>
+    <form>
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Nome do animal:" [(ngModel)]="product.name" name="name">
+        </mat-form-field>
+        <p class="gray">Se ele não possuir nome está tudo bem, vamos arranjar um lar para ele do mesmo jeito.</p>
+        <mat-form-field>
+            <mat-label>Selecione a espécie:</mat-label>
+            <mat-select [(ngModel)]="product.specie" name="specie">
+                <mat-option value="Cachorro" (click)="specie_selected('dog')">Cachorro</mat-option>
+                <mat-option value="Gato" (click)="specie_selected('cat')">Gato</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Digite o bairro de onde você quer anunciar a adoção:"
+                [(ngModel)]="product.district" name="district">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Selecione ou digite a raça do animal:" [(ngModel)]="product.race" name="race">
+        </mat-form-field>
+        <mat-radio-group aria-label="Selecione uma opção" [(ngModel)]="product.race" name="race" *ngIf="specie">
+            <mat-radio-button value="Golden Retriever">Golden Retriever</mat-radio-button>
+            <mat-radio-button value="Salsicha">Salsicha</mat-radio-button>
+            <mat-radio-button value="Husky Siberiano">Husky Siberiano</mat-radio-button>
+            <mat-radio-button value="Vira-Lata Caramelo">Vira-Lata Caramelo</mat-radio-button>
+        </mat-radio-group>
+        <mat-radio-group aria-label="Selecione uma opção" [(ngModel)]="product.race" name="race" *ngIf="!specie">
+            <mat-radio-button value="Persa">Persa</mat-radio-button>
+            <mat-radio-button value="Siamês">Siamês</mat-radio-button>
+            <mat-radio-button value="Garfield">Garfield</mat-radio-button>
+            <mat-radio-button value="Bombaim">Bombaim</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field>
+            <input matInput placeholder="Idade" [(ngModel)]="product.age" name="age">
+        </mat-form-field>
+
+
+        <br>
+        <br>
+        <mat-label>Esse animal foi encontrado por você?</mat-label>
+        <br>
+        <mat-radio-group aria-label="Selecione uma opção">
+            <mat-radio-button value="sim" (click)="wasfound(1)">Sim</mat-radio-button>
+            <mat-radio-button value="nao" (click)="wasfound(0)">Não</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field *ngIf="was_found">
+            <input matInput placeholder="Endereço de onde foi encontrado:" [(ngModel)]="product.where_found"
+                name="where_found">
+        </mat-form-field>
+        <mat-checkbox *ngIf="was_found" [(ngModel)]="product.collar" name="collar">Coleira</mat-checkbox>
+        <mat-checkbox *ngIf="was_found" [(ngModel)]="product.owners_belongings" name="owners_belongings">Pertence do
+            dono</mat-checkbox>
+        <mat-checkbox *ngIf="was_found" [(ngModel)]="product.born_mark" name="born_mark">Marca de nascença
+        </mat-checkbox>
+        <mat-checkbox *ngIf="was_found" [(ngModel)]="product.mist_mark" name="mist_mark">Marca de maus tratos
+        </mat-checkbox>
+        <br>
+        <mat-form-field *ngIf="was_found">
+            <input matInput type="datetime-local" placeholder="Data e horário de quando foi encontrado:"
+                [(ngModel)]="product.mist_mark" name="mist_mark">
+        </mat-form-field>
+    </form>
+
+    <button mat-raised-button (click)="updateProduct()" color="accent">
+        Atualizar
+    </button>
+
+    <button mat-raised-button (click)="cancel()" c>
+        Cancelar
+    </button>
+</mat-card>

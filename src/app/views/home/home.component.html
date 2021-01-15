@@ -1,0 +1,27 @@
+<app-seleton-loader *ngIf=!loaded Cwidth="100%" Cheight="100%"></app-seleton-loader>
+
+<mat-card *ngIf=loaded class="home mat-elevation-z3">
+    <mat-card-title class="title">
+        Bem Vindo!
+    </mat-card-title>
+    <mat-card-subtitle class="subtitle">
+        <p>
+            Esse é o Adotacão, um site totalmente destinado a ajudar os animais que
+            não tem um lar, você pode anunciar um animal em busca de uma nova casa ou
+            escolher seu futuro amiguinho.
+        </p>
+        <p>
+            Existem vários procurando por um lar hoje, vamos ajudá-los?
+        </p>
+
+        <br>
+        <p>Para começar é bem simples, basta clicar no menu lateral à esquerda para
+            escolher seu futuro mascote ou para ajudar um a arranjar seu novo lar!
+        </p>
+    </mat-card-subtitle>
+</mat-card>
+
+<mat-card *ngIf=loaded class="home image mat-elevation-z3">
+    <img src="../../assets/images/Animals/dog_smile.jpg" alt="">
+    <img src="../../assets/images/Animals/cat_smile.jpg" alt="">
+</mat-card>
